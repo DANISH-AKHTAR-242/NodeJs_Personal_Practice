@@ -4,3 +4,5 @@
 /6.Auth_Authorization/.env
 /7.Unit_Testing_Best_Practices/node_modules
 /7.Unit_Testing_Best_Practices/.env
+/10.websockets/node_modules
+/10.websockets/.env
