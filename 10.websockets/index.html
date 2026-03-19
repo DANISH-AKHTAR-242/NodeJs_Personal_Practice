@@ -1,0 +1,33 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WebSocket Example</title>
+    </head>
+    <body>
+        <h1>WebSocket Example</h1>
+        <p>This is a simple WebSocket client.</p>
+
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button id="sendButton">Send</button>
+
+        <pre id="log"> Empty Log</pre>
+        <script>
+            const ws = new WebSocket('ws://localhost:8080/chat');
+            ws.onopen = () => {
+                console.log('Connected to WebSocket server');
+            };
+            ws.onmessage = (event) => {
+                console.log('Received message:', event.data);
+                document.getElementById('log').textContent += '\n' + event.data;
+            };
+
+            function sendMessage() {
+                const input = document.getElementById('messageInput');
+                const message = input.value;
+                ws.send(message);
+                input.value = '';
+            }
+        </script>
+    </body>
+</html>
