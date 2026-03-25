@@ -155,6 +155,11 @@ console.log(myBalance.balance); // Balance remains unchanged due to invalid inpu
  * 5. we can also call the parent class constructor using the super keyword.
  * 6. we can also create a multi-level inheritance (a child class can be a parent class for another class)  
  */
+//types of inheritance
+//1. single inheritance - a child class inherits from a single parent class.
+//2. multiple inheritance - a child class inherits from multiple parent classes (not supported in JavaScript).
+//3. multilevel inheritance - a child class inherits from a parent class, which in turn inherits from another parent class.
+//4. hierarchical inheritance - multiple child classes inherit from a single parent class.
 
 class GovtCarSchema {
   constructor(brand, tyre, rating, airbags) {
@@ -223,3 +228,37 @@ class Car extends Vehicle {
 const myCar = new Car();
 myCar.start();
 myCar.stop();
+
+//mixins - a mixin is a class that provides methods that can be used by other classes without the need for inheritance. In JavaScript, we can create mixins using functions that take a class as an argument and return a new class that extends the original class with additional methods.
+
+function ElectricVehicleMixin(Base) {
+  return class extends Base {
+    charge() {
+      console.log("Charging the electric vehicle");
+    }
+  };
+}
+
+
+//-- Polymorphism ------
+// Polymorphism is the ability of an object to take on many forms. In OOP, it allows objects of different classes to be treated as objects of a common superclass. It is achieved through method overriding (runtime polymorphism) and method overloading (compile-time polymorphism). In JavaScript, we can achieve polymorphism through method overriding.
+
+class Animal {
+  speak() {
+    console.log("Animal speaks");
+  }
+  walk() {
+    console.log("Animal walks");
+  }
+}
+
+class Dog extends Animal {
+  //method overriding -> child is overriding the method of parent class
+  speak() {
+    console.log("Dog barks");
+  }
+}
+// this runtime polymorphism -> the method that gets called is determined at runtime based on the type of the object (in this case, Dog).
+const tommy = new Dog();
+tommy.speak(); // Output: Dog barks (method overriding)
+tommy.walk(); // Output: Animal walks (inherited method)
