@@ -76,5 +76,3 @@ class human {
 
 //law of demeter
 //Example: A class should not know about the internal details of another class. For example, if we have a class that represents a car, it should not know about the internal details of the engine class.
-
-
